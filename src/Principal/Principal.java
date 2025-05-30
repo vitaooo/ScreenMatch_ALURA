@@ -1,14 +1,16 @@
+package Principal;
+
 import br.com.alura.screenmatch.calculo.CalculadoraDeTempo;
 import br.com.alura.screenmatch.calculo.FiltroRecomendacao;
 import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 
+import java.util.ArrayList;
+
 public class Principal {
     public static void main(String[] args) {
-        Filme meuFilme = new Filme();
-        meuFilme.setNome("Missão impossível 007");
-        meuFilme.setAnoDeLancamento(2022);
+        Filme meuFilme = new Filme("Missão impossível 007", 2022);
         meuFilme.setDuracaoEmMinutos(180);
 
         meuFilme.exibeFichaTecnica();
@@ -18,14 +20,11 @@ public class Principal {
         System.out.println("Total de avaliações: "+ meuFilme.getTotalDeAvaliacoes());
         System.out.println(meuFilme.pegaMedia());
 
-        Serie lost = new Serie();
-        lost.setNome("Lost");
+        Serie lost = new Serie("Lost", 2020);
         lost.setAtiva(true);
 
 
-        Filme outrofilme = new Filme();
-
-        outrofilme.setNome("Missão possível 009");
+        Filme outrofilme = new Filme("Missão possível 009", 2008);
         outrofilme.setAnoDeLancamento(2022);
         outrofilme.setDuracaoEmMinutos(200);
 
@@ -43,6 +42,17 @@ public class Principal {
         episodio.setSerie(lost);
         episodio.setTotalVisualizacoes(300);
         filtro.filtra(episodio);
+
+        Filme filmeDoVictor = new Filme("Senhor dos Anéis", 2000);
+
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(filmeDoVictor);
+        listaDeFilmes.add(meuFilme);
+        listaDeFilmes.add(outrofilme);
+        System.out.println("Tamanho da lista " + listaDeFilmes.size());
+        System.out.println("primeiro filme " + listaDeFilmes.get(0).getNome());
+        System.out.println(listaDeFilmes);
+        System.out.println("toString do Filme " + listaDeFilmes.get(0).toString());
 
 
     }
